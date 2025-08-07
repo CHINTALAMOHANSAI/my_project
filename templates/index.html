@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Manager</title>
+    <link rel="stylesheet" href="static/css/index.css">
+  </head>
+  <body>
+    <div class="bg-container">
+      <div class="image_container">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSni4W_ssx3U1KqS7a7wY_Q4NVU2hW3CP-1jA&s"
+        />
+      </div>
+      <div>
+        <h1>Student Management</h1>
+
+        <section id="form-section">
+          <h2>Add Student</h2>
+          <form id="student-form">
+            <label for="id">Student ID</label>
+            <input type="text" id="id" placeholder="ID" required />
+            <br />
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Name" required />
+            <br />
+            <label for="age">Age</label>
+            <input type="number" id="age" placeholder="Age" required />
+            <br />
+            <label for="marks">Marks</label>
+            <input type="number" id="marks" placeholder="Marks" required />
+            <br />
+            <button type="submit">Add Student</button>
+          </form>
+          <p id="form-msg"></p>
+        </section>
+
+        <section id="list-section">
+          <h2>All Students</h2>
+          <button type="button" onclick="loadStudents()" href="_blank">Load Students</button>
+          <ul id="student-list"></ul>
+        </section>
+      </div>
+    </div>
+    <script src="static/js/index.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Manager</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+
+      h1,
+      h2 {
+        color: #2c3e50;
+      }
+
+      form {
+        margin-bottom: 15px;
+      }
+
+      input {
+        margin: 5px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        padding: 8px 12px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      #form-msg {
+        color: green;
+      }
+
+      #student-list {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #student-list li {
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Student Management</h1>
+
+    <section id="form-section">
+      <h2>Add Student</h2>
+      <form id="student-form">
+        <input type="text" id="name" placeholder="Name" required />
+        <input type="number" id="age" placeholder="Age" required />
+        <input type="number" id="marks" placeholder="Marks" required />
+        <button type="submit">Add Student</button>
+      </form>
+      <p id="form-msg"></p>
+    </section>
+
+    <section id="list-section">
+      <h2>All Students</h2>
+      <button onclick="loadStudents()">Load Students</button>
+      <ul id="student-list"></ul>
+    </section>
+
+    <script>
+      const BACKEND_URL = "http://127.0.0.1:5000"; // ← Replace with your backend IP
+
+      document
+        .getElementById("student-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const age = parseInt(document.getElementById("age").value);
+          const marks = parseFloat(document.getElementById("marks").value);
+
+          const response = await fetch(`${BACKEND_URL}/add_student`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, age, marks }),
+          });
+
+          const msg = document.getElementById("form-msg");
+          if (response.ok) {
+            msg.textContent = "Student added successfully!";
+            msg.style.color = "green";
+            document.getElementById("student-form").reset();
+            loadStudents();
+          } else {
+            msg.textContent = "Failed to add student.";
+            msg.style.color = "red";
+          }
+        });
+
+      async function loadStudents() {
+        const res = await fetch(`${BACKEND_URL}/students`);
+        const students = await res.json();
+
+        const list = document.getElementById("student-list");
+        list.innerHTML = "";
+        students.forEach((student) => {
+          const li = document.createElement("li");
+          li.textContent = `${student.name} | Age: ${student.age} | Marks: ${student.marks}`;
+          list.appendChild(li);
+        });
+      }
+    </script>
+  </body>
+</html> -->
